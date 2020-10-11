@@ -9,7 +9,7 @@ import threading
 import multiprocessing as  ml
 
 from src.videoloader import videoloader as vl
-from src.recognizer import recognizer as r
+from src.recognizer import recognizer as r #tt
 
 if __name__ == '__main__':
     q = ml.Queue()
