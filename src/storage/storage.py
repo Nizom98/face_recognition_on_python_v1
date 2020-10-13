@@ -7,9 +7,9 @@ import pickle
 import cv2
 import src.functions as funcs
 
-DIR_STORAGE = "./../../storage/"
+DIR_STORAGE = os.getcwd() +  "/storage"
 DIR_FACE_IMGS = "imgs"
-DIR_FACES = "images1"
+DIR_FACES = "known_faces"
 DIR_FACE_ENCODINGS = "encodings"
 DIR_UNKNOWN_FACES = "unknown_faces"
 
@@ -26,8 +26,8 @@ def newFace(name, face_encode, img):
     return dir_encodings
 
 def saveNewUnkwnFaceImg(img):
-    unfacedir = DIR_STORAGE  + "/" + DIR_UNKNOWN_FACES + "/"
-    cv2.imwrite(funcs.getNextName(unfacedir), img)
+    unfacedir = DIR_STORAGE + "/" + DIR_UNKNOWN_FACES + "/"
+    return cv2.imwrite(funcs.getNextName(unfacedir), img)
 
 def add2faceImgs(face_dir_name, arr_face_im):
     path2dir = f"{DIR_STORAGE}/{DIR_FACES}/{face_dir_name}"

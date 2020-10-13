@@ -20,18 +20,18 @@ if __name__ == '__main__':
     loader = ml.Process(target=vl.start, args=(url, q, cmd_stop))
     loader.daemon = True
     loader.start()
-    facecont = ml.Process(target=r.start, args=(q, cmd_stop, r.MODE_FFS_DF_DL_OTW))
+    facecont = ml.Process(target=r.start, args=(q, cmd_stop, r.MODE_COLLECT_UNKNOWN_FACES))
     facecont.daemon = True
     facecont.start()
     while True:
-        cmd = input("type cmd:")
+        cmd = input("\ntype cmd:")
         if cmd =="s":
-            cmd_stop.put(True);
+            cmd_stop.put(True)
             break
-    print("MAIN: join")
+    print("\nMAIN: join")
     loader.join()
     facecont.join(timeout=10)
     #print(f"loader is_alive status: {loader.is_alive()}")
     #print(f"facecont is_alive status: {facecont.is_alive()}")
-    print("MAIN: end")
+    print("\nMAIN: end")
 

@@ -4,6 +4,7 @@ import fnmatch
 import numpy as np
 import pickle
 import cv2
+import json
 
 def getFirstEncodedAndLocation(encodings, locations):
     if len(encodings) == 0 or len(locations) == 0:
@@ -52,3 +53,6 @@ def getNextName(path2dir, type = ".jpg"):
         fcount += 1
         fname = path2dir + str(fcount) + type
     return fname
+
+def toJsonStr(param):
+    return json.dumps(param)

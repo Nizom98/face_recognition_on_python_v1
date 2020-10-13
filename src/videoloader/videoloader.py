@@ -10,9 +10,10 @@ import sys
 def start(url, q, cmd_stop): 
     video = cv2.VideoCapture(url)
     if not video.isOpened():
-        print("VideoLoader: не удалось открыть видеопоток! Проверьте правильность url адреса.")
+        print("\nVideoLoader: не удалось открыть видеопоток! Проверьте правильность url адреса.")
         cmd_stop.put(True);
         return
+    print("\nVideoLoader:start")
     while True:
         ok, img = video.read()
         if ok and q.empty():
@@ -20,5 +21,5 @@ def start(url, q, cmd_stop):
         if not cmd_stop.empty():
             break
     video.release()
-    print("VideoLoader: завершил работу!")
+    print("\nVideoLoader: завершил работу!")
     sys.exit("VideoLoader: end")
