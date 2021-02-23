@@ -14,7 +14,7 @@ DIR_FACE_ENCODINGS = "encodings"
 DIR_UNKNOWN_FACES = "unknown_faces"
 
 def newFace(name, face_encode, img):
-    faces_len = len(os.listdir(DIR_FACES))
+    faces_len = len(os.listdir(DIR_STORAGE + "/" + DIR_FACES))
     newDir = DIR_STORAGE + "/" + DIR_FACES + "/face" + str(faces_len + 1)
     os.mkdir(newDir)
     dir_encodings = newDir + "/" + DIR_FACE_ENCODINGS 

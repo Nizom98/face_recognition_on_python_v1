@@ -16,11 +16,11 @@ if __name__ == '__main__':
     cmd_stop = ml.Queue()
     url = "d" #input("Type camera address: ")
     if url == 'd':
-        url = 'rtsp://admin:123@192.168.0.102:554/live2.sdp'
+        url = 0 #'rtsp://admin:123@192.168.0.102:554/live2.sdp'
     loader = ml.Process(target=vl.start, args=(url, q, cmd_stop))
     loader.daemon = True
     loader.start()
-    facecont = ml.Process(target=r.start, args=(q, cmd_stop, r.MODE_COLLECT_UNKNOWN_FACES))
+    facecont = ml.Process(target=r.start, args=(q, cmd_stop, r.MODE_FACECONTROL_SHOW_VIDEOSTREAM))
     facecont.daemon = True
     facecont.start()
     while True:

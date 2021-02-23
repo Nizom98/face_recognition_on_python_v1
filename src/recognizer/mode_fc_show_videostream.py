@@ -15,6 +15,7 @@ ENCODINGS_KEYS = []
 
 def faceExist(face_encode):
     k = 0
+    global ENCODINGS_FACES 
     for face_encodings  in ENCODINGS_FACES:
         if len(face_encodings) > 0:
             results = fr.compare_faces(face_encodings, face_encode, 0.6)
@@ -23,10 +24,16 @@ def faceExist(face_encode):
         k += 1
     return -1
 
+def addNewFace(name, face_encode, img):
+    global ENCODINGS_FACES 
+    global ENCODINGS_KEYS
+    ENCODINGS_KEYS.append(st.newFace(name, face_encode, img))
+    ENCODINGS_FACES.append([face_encode])
+
 def start(q, cmd_stop):
     global ENCODINGS_FACES 
     global ENCODINGS_KEYS
-    ENCODINGS_FACES, ENCODINGS_KEYS = [], []
+    ENCODINGS_FACES, ENCODINGS_KEYS = st.loadImgs() #[], []
     win_name = "window"
     next_face_num = 0
     
@@ -42,7 +49,7 @@ def start(q, cmd_stop):
             index = faceExist(face_encoded)
             if index == -1:
                 print("NEW")
-                st.newFace(str(next_face_num), face_encoded, funcs.getFaceImage(im_copy, face_location))
+                addNewFace(str(next_face_num), face_encoded, funcs.getFaceImage(im_copy, face_location))
                 next_face_num += 1
             else:
                 print("MATCH")
