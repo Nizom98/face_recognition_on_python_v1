@@ -1,5 +1,6 @@
-storage
-build
-dist
-__pycache__
+storage/known_faces/*.*
+build/
+dist/
+__pycache__/
 main2.spec
+log.txt
